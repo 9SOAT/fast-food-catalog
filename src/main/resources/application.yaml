@@ -1,0 +1,25 @@
+---
+spring:
+  application:
+    name: fast-food-catalog
+  main:
+    lazy-initialization: true
+  jmx:
+    enabled: false
+  mvc:
+    problem-details:
+      enabled: true
+    jackson:
+      default-property-inclusion: non_null
+  data:
+    rest:
+      default-media-type: application/json
+    mongodb:
+        uri: ${MONGODB_URI}
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
