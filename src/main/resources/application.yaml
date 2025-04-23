@@ -1,5 +1,8 @@
 ---
 spring:
+  config:
+    activate:
+      on-profile: prod
   application:
     name: fast-food-catalog
   main:
