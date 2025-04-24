@@ -1,0 +1,15 @@
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 4.0.2
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    mongo:
+      enabled: false
