@@ -23,6 +23,10 @@
 
 		<!-- JaCoCo Properties -->
 		<jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
+
+		<!-- SonarQube		-->
+		<sonar.organization>9soat</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
