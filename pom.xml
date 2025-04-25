@@ -23,15 +23,6 @@
 
 		<!-- JaCoCo Properties -->
 		<jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
-
-		<!-- SonarQube		-->
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.language>java</sonar.language>
-		<sonar.organization>9soat</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.pullrequest.github.summary_comment>true</sonar.pullrequest.github.summary_comment>
-		<sonar.language>java</sonar.language>
 	</properties>
 	<dependencies>
 		<dependency>
