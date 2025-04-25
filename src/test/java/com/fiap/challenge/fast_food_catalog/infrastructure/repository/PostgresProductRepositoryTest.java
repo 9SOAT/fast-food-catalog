@@ -38,7 +38,7 @@ class PostgresProductRepositoryTest {
     private PostgresProductRepository target;
 
     @Test
-    public void findAllByStatusByCategory_whenCategoryExists_shouldReturnPageOfProducts() {
+    void findAllByStatusByCategory_whenCategoryExists_shouldReturnPageOfProducts() {
         ProductCategoryEntity categoryEntity = ProductCategoryEntity.SANDWICH;
         ProductCategory category = ProductCategory.SANDWICH;
         int page = 0;
@@ -64,7 +64,7 @@ class PostgresProductRepositoryTest {
     }
 
     @Test
-    public void findAllByStatusByCategory_whenCategoryDoesNotExist_shouldReturnEmptyPage() {
+    void findAllByStatusByCategory_whenCategoryDoesNotExist_shouldReturnEmptyPage() {
         ProductCategoryEntity categoryEntity = ProductCategoryEntity.SANDWICH;
         ProductCategory category = ProductCategory.SANDWICH;
         int page = 0;
@@ -85,7 +85,7 @@ class PostgresProductRepositoryTest {
     }
 
     @Test
-    public void findById_whenProductExists_shouldReturnProduct() {
+    void findById_whenProductExists_shouldReturnProduct() {
         String id = "1L";
         Product product = ProductFixture.aProduct();
         when(jpaProductRepositoryMock.findById(id))
@@ -100,7 +100,7 @@ class PostgresProductRepositoryTest {
     }
 
     @Test
-    public void save_whenProductIsValid_shouldReturnProduct() {
+    void save_whenProductIsValid_shouldReturnProduct() {
         Product product = ProductFixture.aProduct();
         when(jpaProductRepositoryMock.save(any()))
             .thenReturn(ProductEntityFixture.aValidProductEntityWithId());
@@ -114,7 +114,7 @@ class PostgresProductRepositoryTest {
     }
 
     @Test
-    public void findAll_ByStatus_whenProductsExists_shouldReturnPageOfProducts() {
+    void findAll_ByStatus_whenProductsExists_shouldReturnPageOfProducts() {
         int page = 0;
         int size = 10;
         when(jpaProductRepositoryMock.findAllByStatusIn(any(), any()))
@@ -133,7 +133,7 @@ class PostgresProductRepositoryTest {
     }
 
     @Test
-    public void findAll_ByStatus_whenProductsDoesNotExist_shouldReturnEmptyPage() {
+    void findAll_ByStatus_whenProductsDoesNotExist_shouldReturnEmptyPage() {
         int page = 0;
         int size = 10;
         when(jpaProductRepositoryMock.findAllByStatusIn(any(), any()))

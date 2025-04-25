@@ -41,13 +41,13 @@ class CatalogControllerTest {
     MockMvc mockMvc;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(catalogController)
             .build();
     }
 
     @Test
-    public void testGetByCategory() throws Exception {
+    void testGetByCategory() throws Exception {
         ProductCategory category = ProductCategory.SANDWICH;
         int page = 1;
         int size = 10;
@@ -82,7 +82,7 @@ class CatalogControllerTest {
     }
 
     @Test
-    public void testGetById() throws Exception {
+    void testGetById() throws Exception {
         String id = "1L";
 
         Product product = ProductFixture.aProduct();

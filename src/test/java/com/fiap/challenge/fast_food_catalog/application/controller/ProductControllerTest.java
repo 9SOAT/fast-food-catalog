@@ -163,7 +163,7 @@ class ProductControllerTest {
 
     @MethodSource("invalidProductWriteRequests")
     @ParameterizedTest(name = " should throw exception with {1}")
-    public void createProduct_returnsBadRequest_whenFieldIsMissing(ProductMutation productMutation, String fieldValidation, String errorMessage) throws Exception {
+    void createProduct_returnsBadRequest_whenFieldIsMissing(ProductMutation productMutation, String fieldValidation, String errorMessage) throws Exception {
 
         String content = objectMapper.writeValueAsString(productMutation);
 
