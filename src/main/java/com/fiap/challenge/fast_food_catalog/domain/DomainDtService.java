@@ -24,4 +24,9 @@ public class DomainDtService implements CatalogService {
         return productRepository.findById(id)
             .orElseThrow(() -> new NotFoundException(String.format("Product not found id=%s", id), "PRODUCT_NOT_FOUND"));
     }
+
+    public Product findById(String id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("Product not found id=%s", id), "PRODUCT_NOT_FOUND"));
+    }
 }

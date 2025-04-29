@@ -12,7 +12,7 @@ public abstract class BusinessException extends RuntimeException {
 
     private final String code;
 
-    public BusinessException(HttpStatus httpStatus, String message, String code) {
+    protected BusinessException(HttpStatus httpStatus, String message, String code) {
         super(message);
         this.httpStatus = httpStatus;
         this.message = message;

@@ -19,7 +19,7 @@ class ApplicationTests {
     private int port;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         RestAssured.port = port;
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
