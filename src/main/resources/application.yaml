@@ -18,7 +18,7 @@ spring:
     rest:
       default-media-type: application/json
     mongodb:
-        uri: ${MONGODB_URI}
+        uri: ${MONGODB_URL}
 
 management:
   endpoint:
@@ -26,3 +26,12 @@ management:
       probes:
         enabled: true
       show-details: always
+
+springdoc:
+  swagger-ui:
+    urls:
+      - url: /catalog/v3/api-docs
+        name: Fast Food Catalog API
+      - url: /v3/api-docs
+        name: Fast Food Catalog API Local
+

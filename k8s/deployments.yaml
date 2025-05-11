@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fast-food-catalog-deployment
+  labels:
+    app: fast-food-catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fast-food-catalog
+  template:
+    metadata:
+      labels:
+        app: fast-food-catalog
+    spec:
+      serviceAccountName: fast-food-catalog-sa
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "nginx-pod-identity-deployment-aws-secrets"
+      containers:
+        - name: fast-food-catalog
+          image: 897722698720.dkr.ecr.us-east-1.amazonaws.com/fast-food-catalog:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+          envFrom:
+            - secretRef:
+                name: catalog-secret
+          resources:
+            requests:
+              memory: "800Mi"
+              cpu: "700m"
+            limits:
+              memory: "800Mi"
+              cpu: "700m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 40
+            periodSeconds: 10
+      restartPolicy: Always

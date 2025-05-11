@@ -3,6 +3,12 @@ openapi: 3.0.1
 info:
   title: Fast Food Catalog API
   version: v0
+
+servers:
+  - url: /catalog
+    description: Production server (uses live data)
+  - url: /
+    description: Local server (uses test data)
 paths:
   '/products/{id}':
     get:
@@ -124,7 +130,7 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProductView'
-  /catalog:
+  /:
     get:
       description: Busca paginada de produtos ativos por categoria
       tags:
@@ -165,7 +171,7 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/PageResultProductView'
-  '/catalog/{id}':
+  '/{id}':
     get:
       description: Busca um produto pelo id
       tags:
