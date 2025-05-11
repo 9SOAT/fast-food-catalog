@@ -103,4 +103,4 @@ jobs:
 
       - name: Check rollout status
         run: |
-          kubectl rollout status deployment/fast-food-deployment
+          kubectl rollout status deployment/fast-food-catalog-deployment
