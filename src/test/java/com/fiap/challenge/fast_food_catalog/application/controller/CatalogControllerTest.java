@@ -61,7 +61,7 @@ class CatalogControllerTest {
         when(viewMapperMock.toProductView(product))
             .thenReturn(productView);
 
-        ResultActions resultActions = mockMvc.perform(get("/catalog")
+        ResultActions resultActions = mockMvc.perform(get("")
             .param("category", category.name())
             .param("page", "1")
             .param("size", "10")
@@ -93,7 +93,7 @@ class CatalogControllerTest {
         when(viewMapperMock.toProductView(product))
             .thenReturn(productView);
 
-        ResultActions resultActions = mockMvc.perform(get("/catalog/{id}", id)
+        ResultActions resultActions = mockMvc.perform(get("/{id}", id)
             .contentType(APPLICATION_JSON));
 
         resultActions.andExpect(status().isOk())
