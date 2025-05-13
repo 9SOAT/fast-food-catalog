@@ -16,9 +16,21 @@ public class TestContext {
 
     private HashMap<String, Object> map = new HashMap<>();
 
-    public <T> T get(String key, Class<T> cast) {
-        var obj = map.get(key);
-        return ((T) obj);
+    public <T> T get(String key, Class<T> type) {
+        Object value = map.get(key);
+        if (value == null) {
+            return null;
+        }
+
+        if (type.isInstance(value)) {
+            return type.cast(value);
+        } else {
+            throw new ClassCastException(
+                    "Value for key '" + key + "' is of type '" + value.getClass().getName() +
+                            "' and cannot be cast to '" + type.getName() + "'"
+            );
+        }
+
     }
 
     public void add(String key, Object object) {
