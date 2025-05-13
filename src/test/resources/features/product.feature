@@ -1,7 +1,6 @@
 # language: pt
 Funcionalidade: Gerenciamento de Produtos no Catálogo
 
-    @smoke
     Cenário: Cadastro de novo produto
         Dado que o administrador acessa o sistema de catálogo
         Quando cadastrar um novo produto

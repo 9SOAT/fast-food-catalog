@@ -1,11 +1,17 @@
 package com.fiap.challenge.fast_food_catalog.bdd.steps;
 
+import com.fiap.challenge.fast_food_catalog.Application;
+import com.fiap.challenge.fast_food_catalog.bdd.config.TestConfig;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
+import io.cucumber.spring.CucumberContextConfiguration;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,10 +19,16 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class CatalogStepDefinition extends CucumberSpringConfiguration {
+@ActiveProfiles("test")
+@CucumberContextConfiguration
+@SpringBootTest(classes = {Application.class, TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CatalogStepDefinition {
 
     @LocalServerPort
     public int port;
+
+    @Autowired
+    public TestContext testContext;
 
     private Response response;
 
@@ -64,7 +76,8 @@ public class CatalogStepDefinition extends CucumberSpringConfiguration {
                 .port(port)
                 .body(produtoInvalido)
                 .when()
-                .post("/products");
+                .post("/products")
+        ;
 
         System.err.println("Tentativa de cadastro inválido | Status: " + response.statusCode());
     }

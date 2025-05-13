@@ -1,4 +1,4 @@
-package com.fiap.challenge.fast_food_catalog.bdd.steps;
+package com.fiap.challenge.fast_food_catalog.bdd;
 
 import com.fiap.challenge.fast_food_catalog.Application;
 import io.cucumber.spring.CucumberContextConfiguration;
